@@ -6,11 +6,11 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const M = require('minimatch');
+const { DefinePlugin } = require('webpack');
 
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   mode: 'development',
   devtool: 'source-map',
   optimization: {
@@ -62,7 +62,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './public/index.html'
     }),
     new ForkTsCheckerWebpackPlugin(),
     new CopyPlugin({
@@ -71,6 +71,10 @@ module.exports = {
     new ESLintPlugin({
         extensions: ['.tsx', '.ts', '.ts'],
         exclude: 'node_modules'
-    })
+    }),
+    // DefinePlugin allows you to create global constants which can be configured at compile time
+    new DefinePlugin({
+      'process.env': process.env.production || !process.env.development,
+    }),
   ]
 };
