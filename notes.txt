@@ -1,4 +1,0 @@
-https://dev.to/alekseiberezkin/setting-up-react-typescript-app-without-create-react-app-oph
-https://medium.com/swlh/implementing-micro-frontends-using-react-8d23b7e0a687
-
-https://betterprogramming.pub/how-to-set-up-a-react-project-using-webpack-typescript-and-sass-74914421158a
