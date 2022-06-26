@@ -10,3 +10,6 @@ https://blog.devgenius.io/implementing-react-router-v6-with-code-splitting-in-a-
 https://redux-toolkit.js.org/tutorials/typescript
 https://github.com/reduxjs/cra-template-redux-typescript
 https://www.newline.co/@satansdeer/using-react-redux-with-typescript--6ea90757
+
+
+https://ogzhanolguncu.com/blog/react-redux-toolkit-with-typescript

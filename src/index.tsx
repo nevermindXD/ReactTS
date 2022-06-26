@@ -1,34 +1,29 @@
-// import React,{ Suspense } from 'react';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from './app';
+import App from './App';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { Provider } from 'react-redux';
+import { store } from "./store/store";
 
-import Home from "./components/home";
-import Settings from "./components/settings";
-import Topics from "./components/topics";
-import NotFound from "./components/404";
-
-// const NotFound = React.lazy(() => import('./components/404'));
-// const Home = React.lazy(() => import('./components/home'));
-// const Settings = React.lazy(() => import('./components/settings'));
-// const Topics = React.lazy(() => import('./components/topics'));
-
+const theme = extendTheme({
+  // Set background to blackish color.
+  styles: {
+    global: {
+      'html, body': {
+        backgroundColor: 'rgb(26,32,44)',
+      },
+    },
+  },
+});
 
 ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            {/* <Suspense fallback={<div>Loading...</div>}> */}
-            <Routes>
-                <Route path='*' element={<NotFound/>} />
-                <Route path="/" element={<App/>}/>
-                <Route path="/home" element={<Home/>}/>
-                <Route path="/settings" element={<Settings/>}/>
-                <Route path="/topics" element={<Topics/>}/>
-            </Routes>
-            {/* </Suspense> */}
-        </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById('root'),
+  <React.StrictMode>
+    <Provider store={store}>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root'),
 );
-
